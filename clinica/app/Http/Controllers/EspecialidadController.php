@@ -56,4 +56,9 @@ class EspecialidadController extends Controller
 
         return redirect()->route('especialidades.index')->with('success', 'Especialidad eliminada exitosamente');
     }
+    /* Cosas nuevas vista detalle(IRENE) */
+    public function show($id){
+        $especialidad = Especialidad::with('medicos')->findOrFail($id);
+        return view('especialidades.show', compact('especialidad'));
+    }
 }
