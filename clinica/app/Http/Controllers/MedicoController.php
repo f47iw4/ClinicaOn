@@ -91,7 +91,7 @@ class MedicoController extends Controller
 
         return redirect()->route('medicos.index')->with('success', 'Médico eliminado exitosamente');
     }
-    /* para mostrar los detalles de los médicos (Irene)*/
+    /* para mostrar los detalles de los médicos*/
     public function show($id){
     $medico = Medico::findOrFail($id);
     return view('medicos.show', compact('medico')); 
