@@ -28,73 +28,29 @@
         </div>
     </nav>
 
-    <!-- Contenido -->
-    <div class="container mt-5">
-        <!-- Sección Especialidades -->
-        <section id="especialidades">
-            <h2 class="text-primary"> Especialidades</h2>
-            <p>Contamos con un equipo de profesionales en distintas áreas médicas.</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Cardiología</h5>
-                            <p class="card-text">Cuidado y tratamiento del corazón y el sistema circulatorio.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Pediatría</h5>
-                            <p class="card-text">Atención especializada para los más pequeños.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Neurología</h5>
-                            <p class="card-text">Diagnóstico y tratamiento de enfermedades del sistema nervioso.</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Carrusel de Imágenes -->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Imagen 1 -->
+            <div class="carousel-item active">
+                <img src="{{ asset('/storage/app/public/images/car1.png') }}" class="d-block w-100" alt="Imagen 1">
             </div>
-        </section>
-
-        <!-- Sección Médicos -->
-        <section id="medicos" class="mt-5">
-            <h2 class="text-primary"> Médicos</h2>
-            <p>Conoce a nuestro equipo de especialistas altamente capacitados.</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. Juan Pérez</h5>
-                            <p class="card-text">Especialista en Cardiología con más de 15 años de experiencia.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Dra. María Gómez</h5>
-                            <p class="card-text">Pediatra comprometida con la salud infantil.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. Luis Fernández</h5>
-                            <p class="card-text">Neurólogo experto en enfermedades del sistema nervioso.</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Imagen 2 -->
+            <div class="carousel-item">
+                <img src="{{ asset('storage/app/public/images/car2.png') }}" class="d-block w-100" alt="Imagen 2">
+                
             </div>
-        </section>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
-
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
