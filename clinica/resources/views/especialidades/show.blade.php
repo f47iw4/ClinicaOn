@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title' , '{{ $especialidad->nombre }}')
+
 @section('content')
     <div class="container">
         <h1>Médicos en la Especialidad: {{ $especialidad->nombre }}</h1>
@@ -40,5 +42,3 @@
             </table>
         @endif
     </div>
-
-    <
