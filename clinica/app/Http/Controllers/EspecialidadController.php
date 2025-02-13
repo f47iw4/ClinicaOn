@@ -61,4 +61,10 @@ class EspecialidadController extends Controller
         $especialidad = Especialidad::with('medicos')->findOrFail($id);
         return view('especialidades.show', compact('especialidad'));
     }
+
+    public function medicos($id){
+        $especialidad = Especialidad::findOrFail($id);
+        $medicos = $especialidad->medicos; 
+        return view('medicos.index', compact('especialidad', 'medicos'));
+    }
 }

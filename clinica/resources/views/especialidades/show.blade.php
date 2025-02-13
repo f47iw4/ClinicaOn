@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title' , '{{ $especialidad->nombre }}')
+@section('title' , $especialidad->nombre)
 
 @section('content')
     <div class="container">

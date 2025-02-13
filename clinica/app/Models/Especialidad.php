@@ -15,6 +15,8 @@ class Especialidad extends Model
     // Relación con el modelo Médico
     public function medicos()
     {
-        return $this->belongsToMany(Medico::class, 'especialidad_medico', 'id_especialidad', 'id_medico');
+        /* se pone hasMany para que sea relación 1:N */
+        return $this->hasMany(Medico::class, 'especialidad_medico', 'id_especialidad', 'id_medico');
     }
+
 }
