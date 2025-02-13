@@ -19,10 +19,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#especialidades">Nuestras Especialidades</a>
+                    <a class="nav-link" href="{{ url('/especialidades') }}">Nuestras Especialidades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#medicos">Nuestros Médicos</a>
+                    <a class="nav-link" href="{{ url('/medicos') }}">Nuestros Médicos</a>
                     </li>
                 </ul>
             </div>
