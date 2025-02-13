@@ -1,9 +1,9 @@
-# 🏥 Clínica Médica - Sistema de Gestión
+# 🏥 Clínica Médica - Sistema de Gestión (WIP)
 
 ![Laravel](https://img.shields.io/badge/Laravel-10-red?style=flat-square&logo=laravel) ![PHP](https://img.shields.io/badge/PHP-83.6%25-blue?style=flat-square&logo=php) ![Blade](https://img.shields.io/badge/Blade-9.3%25-purple?style=flat-square) ![JavaScript](https://img.shields.io/badge/JavaScript-1.2%25-yellow?style=flat-square&logo=javascript) ![CSS](https://img.shields.io/badge/CSS-0.1%25-blue?style=flat-square&logo=css3)
 
 ## 📌 Descripción
-Este es un sistema de gestión para una clínica médica desarrollado en **Laravel**, diseñado para manejar citas, pacientes, historiales médicos y administración general de la clínica de manera eficiente y segura.
+Este es un sistema de gestión para una clínica médica desarrollado en **Laravel**, diseñado para manejar citas, pacientes, historiales médicos y administración general de la clínica de manera eficiente y segura. 
 
 ## 🚀 Tecnologías Utilizadas
 - **PHP (Laravel 10)** - Framework principal
