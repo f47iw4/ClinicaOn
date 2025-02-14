@@ -4,7 +4,8 @@
 
 @section('content')
     <h1>Lista de Médicos</h1>
-    <table>
+
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -14,11 +15,11 @@
         </thead>
         <tbody>
             @foreach($medicos as $medico)
-            <tr>
-                <td>{{ $medico->nombre }}</td>
-                <td>{{ $medico->apellidos }}</td>
-                <td><a href="{{ route('medicos.show', $medico->id) }}">Más detalles</a></td>
-            </tr>
+                <tr>
+                    <td>{{ $medico->nombre }}</td>
+                    <td>{{ $medico->apellidos }}</td>
+                    <td><a href="{{ route('medicos.show', $medico->id) }}">Más detalles</a></td>
+                </tr>
             @endforeach
         </tbody>
     </table>
