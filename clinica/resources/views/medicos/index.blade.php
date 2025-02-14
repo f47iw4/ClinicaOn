@@ -9,7 +9,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Acción</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
