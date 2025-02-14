@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    
+    <!-- Favicon con la imagen proporcionada -->
+    <link rel="icon" href="https://img.icons8.com/ultraviolet/40/heart-health.png" type="image/png">
+    
     <title>@yield('title', 'Mi Aplicación')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
@@ -12,7 +16,7 @@
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">Enfermitos</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Enfermitos</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
