@@ -24,5 +24,3 @@ class SearchController extends Controller
         return view('search.results', compact('especialidades', 'medicos', 'query'));
     }
 }
-
-

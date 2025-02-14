@@ -7,6 +7,7 @@ use App\Models\Especialidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+
 class MedicoController extends Controller
 {
     public function index()

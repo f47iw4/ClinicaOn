@@ -37,6 +37,16 @@
                         <i class="bi bi-person-circle"></i> Iniciar Sesión
                     </a>
                     </li>
+
+                    <!-- Formulario de búsqueda : IMPORTANTE-->
+                    <li class="nav-item">
+                        <form class="d-flex" action="{{ route('search') }}" method="GET">
+                            <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar" name="query">
+                            <button class="btn btn-outline-light" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
