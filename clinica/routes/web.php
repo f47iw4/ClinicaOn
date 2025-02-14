@@ -31,3 +31,11 @@ Route::get('/admin', function () {
 Route::get('/admin/medicos', [MedicoController::class, 'adminIndex'])->name('admin.medicos');
 // Rutas de administración de especialidades
 Route::get('/admin/especialidades', [EspecialidadController::class, 'adminIndex'])->name('admin.especialidades');
+
+// Rutas para Especialidades
+Route::get('/admin/especialidades/crear', [EspecialidadController::class, 'create'])->name('admin.especialidades.create');
+Route::post('/admin/especialidades', [EspecialidadController::class, 'store'])->name('especialidades.store');
+
+// Rutas para Médicos
+Route::get('/admin/medicos/crear', [MedicoController::class, 'create'])->name('admin.medicos.create');
+Route::post('/admin/medicos', [MedicoController::class, 'store'])->name('medicos.store');

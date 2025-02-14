@@ -7,8 +7,7 @@
     <h1>Administrar Especialidades</h1>
 
     <!-- Botón para añadir una nueva especialidad -->
-    <a href="{{ route('especialidades.create') }}" class="btn btn-success mb-3">Añadir Especialidad</a>
-
+    <a href="{{ route('admin.especialidades.create') }}" class="btn btn-success mb-3">Añadir Especialidad</a>
     <table class="table">
         <thead>
             <tr>

@@ -7,8 +7,7 @@
     <h1>Administrar Médicos</h1>
 
     <!-- Botón para añadir un nuevo médico -->
-    <a href="{{ route('medicos.create') }}" class="btn btn-success mb-3">Añadir Médico</a>
-
+    <a href="{{ route('admin.medicos.create') }}" class="btn btn-success mb-3">Añadir Médico</a>
     <table class="table">
         <thead>
             <tr>
