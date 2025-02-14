@@ -98,5 +98,10 @@ class MedicoController extends Controller
     return view('medicos.show', compact('medico')); 
     }
 
+    //Método para listar los médicos en la vista del administrador(incluye botones de editar y eliminar)
+    public function adminIndex(){
+        $medicos = Medico::with('especialidad')->get();
+        return view('admin.medicos', compact('medicos'));
+    }
 }
 

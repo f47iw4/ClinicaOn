@@ -10,13 +10,13 @@ class Medico extends Model
     protected $table = 'medico';
 
     // Definir las columnas que se pueden asignar masivamente
-    protected $fillable = ['n_colegiado', 'nombre', 'apellidos', 'email', 'contrasenia', 'telefono'];
+    protected $fillable = ['n_colegiado', 'nombre', 'apellidos', 'email', 'contrasenia', 'telefono', 'id_especialidad'];
 
     // Relación con el modelo Especialidad
-    public function especialidades(){
+    public function especialidad(){
         /* para que sea 1:N se pone belongsTo */
-        /* ultimos cambios: he eliminado especialidad_medico e id */
-        return $this->belongsTo(Especialidad::class,'id_especialidad');
+        /* ultimos cambios: he eliminado especialidad_medico*/
+        return $this->belongsTo(Especialidad::class,'id_especialidad', 'id');
     }
 }
 

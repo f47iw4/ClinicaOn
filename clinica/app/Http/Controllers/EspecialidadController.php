@@ -67,4 +67,10 @@ class EspecialidadController extends Controller
         $medicos = $especialidad->medicos; 
         return view('medicos.index', compact('especialidad', 'medicos'));
     }
+
+    //Método para la vista de administración de especialidades(incluye botones de modificar y eliminar)
+    public function adminIndex(){
+        $especialidades = Especialidad::all();
+        return view('admin.especialidades', compact('especialidades'));
+    }
 }
