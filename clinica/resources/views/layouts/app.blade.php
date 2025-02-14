@@ -49,7 +49,7 @@
 
     <footer class="bg-primary text-white py-3">
     <div class="container text-center">
-        <p>© 2025 ClínicaOn. Todos los derechos reservados.</p>
+        <p>© 2025 Enfermitos. Todos los derechos reservados.</p>
     </div>
 </footer>
 
