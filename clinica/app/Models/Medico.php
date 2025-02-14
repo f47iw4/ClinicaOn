@@ -15,7 +15,7 @@ class Medico extends Model
     // Relación con el modelo Especialidad
     public function especialidades(){
         /* para que sea 1:N se pone belongsTo */
-        /* ultimos cambios: he eliminado especialidad_medico e id_medico */
+        /* ultimos cambios: he eliminado especialidad_medico e id */
         return $this->belongsTo(Especialidad::class,'id_especialidad');
     }
 }
