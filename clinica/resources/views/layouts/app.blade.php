@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     
+    <!-- Agregar Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Favicon con la imagen proporcionada -->
     <link rel="icon" href="https://img.icons8.com/ultraviolet/40/heart-health.png" type="image/png">
     
@@ -27,6 +30,12 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{ url('/medicos') }}">Nuestros Médicos</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/medicos') }}">
+                        <!-- Icono de usuario para "Iniciar Sesión" -->
+                        <i class="bi bi-person-circle"></i> Iniciar Sesión
+                    </a>
                     </li>
                 </ul>
             </div>
