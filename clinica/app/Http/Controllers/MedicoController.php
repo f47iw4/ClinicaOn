@@ -19,34 +19,32 @@ class MedicoController extends Controller
     public function create()
     {
         $especialidades = Especialidad::all();
-        return view('medicos.create', compact('especialidades'));
+        return view('admin.crear_medico', compact('especialidades'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'n_colegiado' => 'required|string|max:100',
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'email' => 'required|email|unique:medicos,email',
-            'contrasenia' => 'required|string|min:8',
-            'telefono' => 'nullable|string|max:20',
-            'especialidades' => 'required|array',
+            'n_colegiado' => 'required|string|unique:medico',
+            'email' => 'required|email|unique:medico',
+            'telefono' => 'required|string',
+            'id_especialidad' => 'required|exists:especialidad,id'
         ]);
 
         $medico = Medico::create([
             'n_colegiado' => $request->n_colegiado,
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
+            'id_especialidad' => $request->id_especialidad, //hay que mostrar una lista de especialidades en la creación de médicos
             'email' => $request->email,
-            'contrasenia' => Hash::make($request->contrasenia),
+            'contrasenia' => $request->contrasenia, //no realizamos encriptación para que sea más facil ya que es una página de prueba
             'telefono' => $request->telefono,
+
         ]);
 
-        // Asociamos las especialidades seleccionadas
-        $medico->especialidades()->attach($request->especialidades);
-
-        return redirect()->route('medicos.index')->with('success', 'Médico registrado exitosamente');
+        return redirect()->route('admin.medicos')->with('success', 'Médico registrado exitosamente');
     }
 
     public function edit($id)

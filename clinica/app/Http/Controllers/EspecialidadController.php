@@ -15,19 +15,22 @@ class EspecialidadController extends Controller
 
     public function create()
     {
-        return view('especialidades.create');
+        return view('admin.crear_especialidad');
     }
 
     public function store(Request $request)
     {
+        //Validad los datos
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
+            'descripcion' => 'required|string',
+            //ambos campos obligatorios
         ]);
-
+        //guarda en la base de datos:
         Especialidad::create($request->only('nombre', 'descripcion'));
 
-        return redirect()->route('especialidades.index')->with('success', 'Especialidad registrada exitosamente');
+        return redirect()->route('admin.especialidades')->with('success', 'Especialidad registrada exitosamente');
+        //Hacemos que redirija a la vista de administración de especialidades no???
     }
 
     public function edit($id)

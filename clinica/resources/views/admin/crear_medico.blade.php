@@ -12,10 +12,19 @@
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required>
             </div>
-
+            
             <div class="mb-3">
                 <label for="apellidos" class="form-label">Apellidos</label>
                 <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_especialidad" class="form-label">Especialidad</label>
+                <select class="form-control" id="id_especialidad" name="id_especialidad" required>
+                    @foreach($especialidades as $especialidad)
+                        <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-3">
@@ -33,14 +42,6 @@
                 <input type="text" class="form-control" id="telefono" name="telefono" required>
             </div>
 
-            <div class="mb-3">
-                <label for="id_especialidad" class="form-label">Especialidad</label>
-                <select class="form-control" id="id_especialidad" name="id_especialidad" required>
-                    @foreach($especialidades as $especialidad)
-                        <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>
-                    @endforeach
-                </select>
-            </div>
 
             <button type="submit" class="btn btn-success">Guardar</button>
             <a href="{{ route('admin.medicos') }}" class="btn btn-secondary">Cancelar</a>
