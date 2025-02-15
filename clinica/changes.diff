@@ -1,0 +1,16 @@
+diff --git a/clinica/phpunit.xml b/clinica/phpunit.xml
+index 506b9a3..e57fc33 100644
+--- a/clinica/phpunit.xml
++++ b/clinica/phpunit.xml
+@@ -4,6 +4,11 @@
+          bootstrap="vendor/autoload.php"
+          colors="true"
+ >
++
++    <testsuites>
++        <testsuite name="change">
++    </testsuites>
++
+     <testsuites>
+         <testsuite name="Unit">
+             <directory>tests/Unit</directory>
