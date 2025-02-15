@@ -60,7 +60,7 @@
     <main>
         @yield('content')
     </main>
-    <footer class="bg-primary text-white py-3 fixed-bottom">
+    <footer class="bg-primary text-white py-1 fixed-bottom">
         <div class="container text-center">
             <p>© 2025 Enfermitos. Todos los derechos reservados.</p>
         </div>
