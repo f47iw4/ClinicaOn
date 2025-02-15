@@ -6,6 +6,7 @@ use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SearchController;
 
+
 // Ruta de búsqueda de la lupa
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
@@ -52,3 +53,9 @@ Route::post('/admin/especialidades', [EspecialidadController::class, 'store'])->
 // Rutas para Médicos
 Route::get('/admin/medicos/crear', [MedicoController::class, 'create'])->name('admin.medicos.create');
 Route::post('/admin/medicos', [MedicoController::class, 'store'])->name('medicos.store');
+
+// update de medicos 
+Route::get('medicos/{id}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
+Route::put('medicos/{id}', [MedicoController::class, 'update'])->name('medicos.update');
+
+
