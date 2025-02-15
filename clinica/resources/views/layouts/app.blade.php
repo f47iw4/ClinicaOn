@@ -36,7 +36,7 @@
                     <a class="nav-link" href="{{ url('/medicos') }}">Nuestros Médicos</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/medicos') }}">
+                    <a class="nav-link" href="{{ url('/login') }}">
                         <!-- Icono de usuario para "Iniciar Sesión" -->
                         <i class="bi bi-person-circle"></i> Iniciar Sesión
                     </a>

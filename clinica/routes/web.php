@@ -3,10 +3,23 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\EspecialidadController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SearchController;
 
 // Ruta de búsqueda de la lupa
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+//Ruta para el login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//si acierta el login se dirige a la página de index 
+Route::get('/admin', function () {
+    return view('admin.index'); // Laravel busca resources/views/admin/index.blade.php
+})->name('admin.index');
+
+
 
 /* Ruta principal he tenido que añadir el nombre porque si no Laravel no lo encuetra */
 Route::get('/', function () {
