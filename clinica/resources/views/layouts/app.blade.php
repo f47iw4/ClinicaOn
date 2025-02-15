@@ -65,6 +65,30 @@
             <p>© 2025 Enfermitos. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let lastScrollTop = window.scrollY;
+        let footer = document.querySelector("footer");
+
+        window.addEventListener("scroll", function () {
+            let currentScroll = window.scrollY;
+            let windowHeight = window.innerHeight;
+            let documentHeight = document.documentElement.scrollHeight;
+
+            if (currentScroll > lastScrollTop) {
+                // Bajando
+                if (currentScroll + windowHeight >= documentHeight) {
+                    footer.style.transform = "translateY(100%)"; // Oculta el footer
+                }
+            } else {
+                // Subiendo
+                footer.style.transform = "translateY(0)"; // Muestra el footer
+            }
+
+            lastScrollTop = currentScroll;
+        });
+    });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
