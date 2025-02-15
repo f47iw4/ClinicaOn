@@ -18,11 +18,15 @@
     <header>
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Enfermitos</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="container">
+        <!-- Imagen del ícono de corazón antes del nombre -->
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <!-- Ícono del corazón -->
+            <img src="https://img.icons8.com/ultraviolet/40/heart-health.png" alt="Heart Health Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+            Enfermitos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
