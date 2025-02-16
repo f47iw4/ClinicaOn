@@ -13,7 +13,7 @@ class Medico extends Model
     protected $fillable = ['n_colegiado', 'nombre', 'apellidos', 'email', 'contrasenia', 'telefono', 'id_especialidad'];
 
     // Relación con el modelo Especialidad
-    public function especialidad(){
+    public function especialidades(){
         /* para que sea 1:N se pone belongsTo */
         /* ultimos cambios: he eliminado especialidad_medico*/
         return $this->belongsTo(Especialidad::class,'id_especialidad', 'id');

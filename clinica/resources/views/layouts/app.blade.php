@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <header>
+    <header class="sticky-top">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
@@ -60,7 +60,7 @@
     <main>
         @yield('content')
     </main>
-    <footer class="bg-primary text-white py-1 fixed-bottom">
+    <footer class="bg-primary text-white py-1 sticky-bottom">
         <div class="container text-center">
             <p>© 2025 Enfermitos. Todos los derechos reservados.</p>
         </div>

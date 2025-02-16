@@ -49,7 +49,7 @@ class MedicoController extends Controller
     {
         $medico = Medico::findOrFail($id);
         $especialidades = Especialidad::all();
-        return view('medicos.edit', compact('medico', 'especialidades'));
+        return view('admin.medicos', compact('medico', 'especialidades'));
     }
 
     public function update(Request $request, $id)
