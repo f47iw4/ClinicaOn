@@ -42,6 +42,7 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Ingresar</button>
         </form>
+        <a href="{{ url('/') }}" class="btn btn-secondary w-100 mt-3">Volver al Inicio</a>
     </div>
 </body>
 </html>

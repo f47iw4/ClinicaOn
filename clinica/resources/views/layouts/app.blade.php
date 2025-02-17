@@ -14,8 +14,8 @@
 </head>
 <body>
     <header>
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <!-- imagen del icono de corazón antes del nombre -->
         <a class="navbar-brand" href="{{ url('/') }}">
@@ -33,13 +33,34 @@
                     <li class="nav-item">
                     <a class="nav-link" href="{{ url('/medicos') }}">Nuestros Médicos</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/login') }}">
-                        <!-- icono de usuario para "Iniciar Sesión" -->
-                        <i class="bi bi-person-circle"></i> Iniciar Sesión
-                    </a>
-                    </li>
                     <!-- Formulario de búsqueda : IMPORTANTE -->
+                    <li class="nav-item dropdown">
+                        @auth
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i> Sr/a {{ Auth::user()->apellidos }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}">
+                                        <i class="bi bi-gear-fill"></i> Administrar
+                                    </a>
+                                </li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        @else
+                            <a class="nav-link" href="{{ url('/login') }}">
+                                <i class="bi bi-person-circle"></i> Iniciar Sesión
+                            </a>
+                        @endauth
+                    </li>
+                    <!-- Formulario de búsqueda : IMPORTANTE-->
                     <li class="nav-item">
                         <form class="d-flex" action="{{ route('search') }}" method="GET">
                             <input class="form-control me-2 rounded-pill shadow-sm border-0" 

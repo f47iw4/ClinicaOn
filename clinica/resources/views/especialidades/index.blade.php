@@ -4,19 +4,18 @@
 
 @section('content')
 <div class="container mt-5">
-    <!-- Sección Especialidades -->
     <section id="especialidades">
         <h2 class="text-primary">Especialidades</h2>
         <p>Contamos con un equipo de profesionales en distintas áreas médicas.</p>
 
         <div class="row">
             @foreach ($especialidades as $especialidad)
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
+                <div class="col-md-4 d-flex align-items-stretch mb-4">
+                    <div class="card shadow-sm w-100">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ $especialidad->nombre }}</h5>
-                            <p class="card-text">{{ $especialidad->descripcion }}</p>
-                            <a href="{{ route('especialidades.medicos', $especialidad->id) }}" class="btn btn-primary mt-2">Ver Médicos</a>
+                            <p class="card-text flex-grow-1">{{ $especialidad->descripcion }}</p>
+                            <a href="{{ route('especialidades.medicos', $especialidad->id) }}" class="btn btn-primary mt-auto">Ver Médicos</a>
                         </div>
                     </div>
                 </div>
@@ -24,4 +23,5 @@
         </div>
     </section>
 </div>
+
 @endsection

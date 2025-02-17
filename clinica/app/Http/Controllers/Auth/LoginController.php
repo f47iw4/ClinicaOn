@@ -18,33 +18,32 @@ class LoginController extends Controller
     // Iniciar sesión
     public function login(Request $request)
     {
-        // Validar las credenciales (sin usar 'password' porque no es encriptada)
         $request->validate([
             'email' => 'required|email',
             'contrasenia' => 'required'
         ]);
-
-        // Buscar usuario por email
+    
         $user = User::where('email', $request->email)->first();
-
-        // Verificar si el usuario existe y la contraseña es correcta
+    
         if ($user && $user->contrasenia === $request->contrasenia) {
-            // Iniciar sesión manualmente
             Auth::login($user);
-
-            // Redirigir al dashboard
+            $request->session()->regenerate();
             return redirect()->route('admin.index');
-
         }
-
-        // Si las credenciales son incorrectas, mostrar un mensaje de error
-        return back()->with('error', 'Credenciales incorrectas');
+    
+        return back()->withErrors(['email' => 'Credenciales incorrectas.']);
     }
+    
+    
 
     // Cerrar sesión
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout(); // Cerrar sesión del usuario
-        return redirect('/login'); // Redirigir al formulario de inicio de sesión
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    
+        return redirect('/login');
     }
+    
 }
