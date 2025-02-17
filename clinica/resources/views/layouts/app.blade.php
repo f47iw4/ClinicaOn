@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    
-    <!-- Agregar Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Favicon con la imagen proporcionada -->
+    <!-- Favicon con la imagen del corasong -->
     <link rel="icon" href="https://img.icons8.com/ultraviolet/40/heart-health.png" type="image/png">
     
     <title>@yield('title', 'Mi Aplicación')</title>
@@ -19,9 +17,9 @@
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <!-- Imagen del ícono de corazón antes del nombre -->
+        <!-- imagen del icono de corazón antes del nombre -->
         <a class="navbar-brand" href="{{ url('/') }}">
-            <!-- Ícono del corazón -->
+            <!-- icono del corazón -->
             <img src="https://img.icons8.com/ultraviolet/40/heart-health.png" alt="Heart Health Icon" style="width: 40px; height: 40px; margin-right: 10px;">
             Enfermitos</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -37,20 +35,22 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{ url('/login') }}">
-                        <!-- Icono de usuario para "Iniciar Sesión" -->
+                        <!-- icono de usuario para "Iniciar Sesión" -->
                         <i class="bi bi-person-circle"></i> Iniciar Sesión
                     </a>
                     </li>
-
-                    <!-- Formulario de búsqueda : IMPORTANTE-->
+                    <!-- Formulario de búsqueda : IMPORTANTE -->
                     <li class="nav-item">
                         <form class="d-flex" action="{{ route('search') }}" method="GET">
-                            <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar" name="query">
-                            <button class="btn btn-outline-light" type="submit">
+                            <input class="form-control me-2 rounded-pill shadow-sm border-0" 
+                                    type="search" placeholder="Buscar..." aria-label="Buscar" name="query">
+                                <button class="btn btn-light shadow-sm p-2" 
+                                type="submit">
                                 <i class="bi bi-search"></i>
-                            </button>
-                        </form>
-                    </li>
+        </button>
+    </form>
+</li>
+
                 </ul>
             </div>
         </div>
