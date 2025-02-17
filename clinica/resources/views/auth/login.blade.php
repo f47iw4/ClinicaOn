@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="https://img.icons8.com/ultraviolet/40/heart-health.png" type="image/png">
+
 </head>
 <body class="d-flex align-items-center justify-content-center vh-100">
     <div class="card p-4 col-sm-5 col-lg-3 shadow-lg">
