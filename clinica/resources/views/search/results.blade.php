@@ -14,7 +14,7 @@
                     @foreach ($medicos as $medico)
                         <li class="list-group-item">
                         <h5>{{ $medico->nombre }} {{ $medico->apellidos }}</h5>
-                        <p>Especialidad: {{ $medico->especialidad->nombre }}</p> 
+                        <p>Especialidad: {{ optional($medico->especialidades)->nombre ?? 'Sin especialidad' }}</p>
                         <!-- Aquí accedemos al nombre de la especialidad -->
                         </li>
                     @endforeach

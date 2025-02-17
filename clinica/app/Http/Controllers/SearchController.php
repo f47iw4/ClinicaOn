@@ -20,7 +20,7 @@ class SearchController extends Controller
         // Realizar la búsqueda en Médicos con paginación (buscando en nombre y apellidos)
         $medicos = Medico::where('nombre', 'like', "%$query%")
                          ->orWhere('apellidos', 'like', "%$query%")
-                         ->with('especialidad') // Cargar la relación para evitar problemas en la vista
+                         ->with('especialidades') // Cargar la relación para evitar problemas en la vista
                          ->paginate(500);
     
         // Retornar los resultados a la vista
