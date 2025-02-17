@@ -11,10 +11,6 @@ use App\Http\Controllers\AuthController;
 // Ruta de búsqueda de la lupa
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
-//Ruta para el login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //si acierta el login se dirige a la página de index 
 Route::get('/admin', function () {
@@ -33,10 +29,24 @@ Route::resource('especialidades', EspecialidadController::class);
 // Ruta para la búsqueda
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+// Rutas para ESPECIALIDADES
+Route::get('/admin/especialidades/crear', [EspecialidadController::class, 'create'])->name('admin.especialidades.create');
+Route::post('/admin/especialidades', [EspecialidadController::class, 'store'])->name('especialidades.store');
 // Ruta para los médicos asociados a una especialidad
 Route::get('/especialidades/{id}/medicos', [EspecialidadController::class, 'medicos'])->name('especialidades.medicos');
+// Ruta para mostrar el formulario de edición de especialidad
+Route::get('/especialidades/{id}/editar', [EspecialidadController::class, 'edit'])->name('especialidades.edit');
+// Ruta para actualizar la especialidad, usando método put
+Route::put('/especialidades/{id}', [EspecialidadController::class, 'update'])->name('especialidades.update');
 
-//Rutas de la vista del administrador
+// Rutas para MÉDICOS
+Route::get('/admin/medicos/crear', [MedicoController::class, 'create'])->name('admin.medicos.create');
+Route::post('/admin/medicos', [MedicoController::class, 'store'])->name('medicos.store');
+//update de medicos 
+Route::get('medicos/{id}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
+Route::put('medicos/{id}', [MedicoController::class, 'update'])->name('medicos.update');
+
+//Rutas de la vista del ADMINISTRADOR
 Route::get('/admin', function () {
     return view('admin.index');
 })->name('admin.index');
@@ -45,23 +55,15 @@ Route::get('/admin/medicos', [MedicoController::class, 'adminIndex'])->name('adm
 // Rutas de administración de especialidades
 Route::get('/admin/especialidades', [EspecialidadController::class, 'adminIndex'])->name('admin.especialidades');
 
-// Rutas para Especialidades
-Route::get('/admin/especialidades/crear', [EspecialidadController::class, 'create'])->name('admin.especialidades.create');
-Route::post('/admin/especialidades', [EspecialidadController::class, 'store'])->name('especialidades.store');
-
-// Rutas para Médicos
-Route::get('/admin/medicos/crear', [MedicoController::class, 'create'])->name('admin.medicos.create');
-Route::post('/admin/medicos', [MedicoController::class, 'store'])->name('medicos.store');
-<<<<<<< Updated upstream
-
-// update de medicos 
-Route::get('medicos/{id}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
-Route::put('medicos/{id}', [MedicoController::class, 'update'])->name('medicos.update');
-
-// Rutas para login de manera segura 
+// Rutas para LOGIN de manera segura 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+//Ruta para el login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Grupo de rutas protegidas con autenticación
 Route::middleware(['auth'])->group(function () {
@@ -72,11 +74,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/especialidades', [EspecialidadController::class, 'index'])->name('especialidades.index');
     Route::get('/admin/medicos', [EspecialidadController::class, 'index'])->name('especialidades.index');
 });
-
-=======
-// Ruta para mostrar el formulario de edición de especialidad
-Route::get('/especialidades/{id}/editar', [EspecialidadController::class, 'edit'])->name('especialidades.edit');
-// Ruta para actualizar la especialidad, usando método put
-Route::put('/especialidades/{id}', [EspecialidadController::class, 'update'])->name('especialidades.update');
->>>>>>> Stashed changes
-
