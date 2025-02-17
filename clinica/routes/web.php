@@ -21,9 +21,7 @@ Route::get('/admin', function () {
     return view('admin.index'); // Laravel busca resources/views/admin/index.blade.php
 })->name('admin.index');
 
-
-
-/* Ruta principal he tenido que añadir el nombre porque si no Laravel no lo encuetra */
+/* Ruta principal*/
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -54,6 +52,7 @@ Route::post('/admin/especialidades', [EspecialidadController::class, 'store'])->
 // Rutas para Médicos
 Route::get('/admin/medicos/crear', [MedicoController::class, 'create'])->name('admin.medicos.create');
 Route::post('/admin/medicos', [MedicoController::class, 'store'])->name('medicos.store');
+<<<<<<< Updated upstream
 
 // update de medicos 
 Route::get('medicos/{id}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
@@ -74,4 +73,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/medicos', [EspecialidadController::class, 'index'])->name('especialidades.index');
 });
 
+=======
+// Ruta para mostrar el formulario de edición de especialidad
+Route::get('/especialidades/{id}/editar', [EspecialidadController::class, 'edit'])->name('especialidades.edit');
+// Ruta para actualizar la especialidad, usando método put
+Route::put('/especialidades/{id}', [EspecialidadController::class, 'update'])->name('especialidades.update');
+>>>>>>> Stashed changes
 

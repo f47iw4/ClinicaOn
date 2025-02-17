@@ -3,28 +3,6 @@
 @section('title', 'Crear Médico')
 
 @section('content')
-<style>
-/* Esto es para arreglar la barra del select, NO QUITAR!! */
-
-select {
-        max-height: 38px; /* Mantiene el tamaño cerrado */
-        overflow-y: auto;
-    }
-
-    /* Hace que el select muestre solo 4 opciones antes de hacer scroll */
-    select option {
-        height: 30px;
-    }
-
-    select[size] {
-        height: auto; 
-    }
-
-    select:focus {
-        min-height: auto;
-    }
-</style>
-
     <div class="container">
         <h1>Añadir Nuevo Médico</h1>
 

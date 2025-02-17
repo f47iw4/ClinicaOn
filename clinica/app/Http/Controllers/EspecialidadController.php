@@ -33,14 +33,12 @@ class EspecialidadController extends Controller
         //Hacemos que redirija a la vista de administración de especialidades no???
     }
 
-    public function edit($id)
-    {
+    public function edit($id){
         $especialidad = Especialidad::findOrFail($id);
-        return view('especialidades.edit', compact('especialidad'));
+        return view('admin.modificar_especialidad', compact('especialidad'));
     }
 
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
@@ -49,17 +47,17 @@ class EspecialidadController extends Controller
         $especialidad = Especialidad::findOrFail($id);
         $especialidad->update($request->only('nombre', 'descripcion'));
 
-        return redirect()->route('especialidades.index')->with('success', 'Especialidad actualizada exitosamente');
+        return redirect()->route('admin.especialidades')->with('success', 'Especialidad actualizada exitosamente');
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         $especialidad = Especialidad::findOrFail($id);
         $especialidad->delete();
 
-        return redirect()->route('especialidades.index')->with('success', 'Especialidad eliminada exitosamente');
+        return redirect()->route('admin.especialidades')->with('success', 'Especialidad eliminada exitosamente');
     }
-    /* Cosas nuevas vista detalle(IRENE) */
+
+    /* Métodos de la vista detalle*/
     public function show($id){
         $especialidad = Especialidad::with('medicos')->findOrFail($id);
         return view('especialidades.show', compact('especialidad'));
@@ -71,7 +69,7 @@ class EspecialidadController extends Controller
         return view('medicos.index', compact('especialidad', 'medicos'));
     }
 
-    //Método para la vista de administración de especialidades(incluye botones de modificar y eliminar)
+    //Método para la vista de administración de especialidades
     public function adminIndex(){
         $especialidades = Especialidad::all();
         return view('admin.especialidades', compact('especialidades'));

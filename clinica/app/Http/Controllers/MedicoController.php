@@ -49,7 +49,8 @@ class MedicoController extends Controller
     {
         $medico = Medico::findOrFail($id);
         $especialidades = Especialidad::all();
-        return view('admin.medicos', compact('medico', 'especialidades'));
+
+        return view('admin.modificar_medico', compact('medico', 'especialidades'));
     }
 
     public function update(Request $request, $id)
@@ -60,7 +61,6 @@ class MedicoController extends Controller
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'email' => 'required|email|unique:medicos,email,' . $id,  // Excluimos el correo electrónico actual
-            'contrasenia' => 'nullable|string|min:8', // Contraseña es opcional, pero si se pasa, debe ser válida
             'telefono' => 'nullable|string|max:20',
             'id_especialidad' => 'required|exists:especialidades,id', // Especialidad seleccionada
         ]);
@@ -70,21 +70,13 @@ class MedicoController extends Controller
 
         // Actualizar los datos del médico
         $medico->update([
-            'n_colegiado' => $request->n_colegiado,
-            'nombre' => $request->nombre,
-            'apellidos' => $request->apellidos,
-            'email' => $request->email,
-            'contrasenia' => $request->contrasenia ? Hash::make($request->contrasenia) : $medico->contrasenia, // Encriptamos la contraseña si se pasa
-            'telefono' => $request->telefono,
-            'id_especialidad' => $request->id_especialidad, // Actualizamos la especialidad seleccionada
+            'nombre' => $request->input('nombre'),
+            'apellidos' => $request->input('apellidos'),
+            'id_especialidad' => $request->input('id_especialidad'),
+            'n_colegiado' => $request->input('n_colegiado'),
+            'email' => $request->input('email'),
+            'telefono' => $request->input('telefono'),
         ]);
-
-        // Si el formulario incluye especialidades múltiples, las sincronizamos
-        // Si no necesitas sincronización de especialidades, omite esta parte
-        // Ejemplo de cómo sincronizar especialidades si la relación es de muchos a muchos
-        if ($request->has('especialidades')) {
-            $medico->especialidades()->sync($request->especialidades);
-        }
 
         return redirect()->route('admin.medicos')->with('success', 'Médico actualizado exitosamente');
     }

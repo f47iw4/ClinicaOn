@@ -47,11 +47,6 @@
                 <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $medico->telefono }}" required>
             </div>
 
-            <div class="mb-3">
-                <label for="contrasenia" class="form-label">Contraseña (opcional)</label>
-                <input type="password" class="form-control" id="contrasenia" name="contrasenia" placeholder="Dejar vacío si no desea cambiar la contraseña">
-            </div>
-
             <button type="submit" class="btn btn-primary">Actualizar Médico</button>
             <a href="{{ route('admin.medicos') }}" class="btn btn-secondary">Cancelar</a>
         </form>
