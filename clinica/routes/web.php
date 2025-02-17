@@ -5,6 +5,7 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\AuthController;
 
 
 // Ruta de búsqueda de la lupa
@@ -57,5 +58,20 @@ Route::post('/admin/medicos', [MedicoController::class, 'store'])->name('medicos
 // update de medicos 
 Route::get('medicos/{id}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
 Route::put('medicos/{id}', [MedicoController::class, 'update'])->name('medicos.update');
+
+// Rutas para login de manera segura 
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Grupo de rutas protegidas con autenticación
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    })->name('admin.index');
+
+    Route::get('/admin/especialidades', [EspecialidadController::class, 'index'])->name('especialidades.index');
+    Route::get('/admin/medicos', [EspecialidadController::class, 'index'])->name('especialidades.index');
+});
 
 

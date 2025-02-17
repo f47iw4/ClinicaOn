@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'medico' => [
+        'driver' => 'session',
+        'provider' => 'medicos',
+    ],
     ],
 
     /*
@@ -69,6 +73,10 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'medicos' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Medico::class,
+        ],
     ],
 
     /*
