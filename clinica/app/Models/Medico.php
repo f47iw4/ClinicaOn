@@ -19,10 +19,10 @@ class Medico extends Model
         return $this->belongsTo(Especialidad::class, 'id_especialidad');
     }
      // Método para obtener la imagen en formato base64
-     public function getFotoUrlAttribute()
-     {
-         return $this->foto ? 'data:image/jpeg;base64,' . base64_encode($this->foto) : asset('imagenes/default-profile.png');
-     }
+    public function getFotoUrlAttribute()
+    {
+        return $this->foto ? 'data:image/jpeg;base64,' . base64_encode($this->foto) : asset('imagenes/default-profile.png');
+    }
 }
 
 
