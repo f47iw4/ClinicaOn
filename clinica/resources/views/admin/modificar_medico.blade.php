@@ -6,7 +6,8 @@
     <div class="container">
         <h1>Editar Médico: {{ $medico->nombre }} {{ $medico->apellidos }}</h1>
 
-        <form action="{{ route('medicos.update', $medico->id) }}" method="POST">
+        <form action="{{ route('medicos.update', $medico->id) }}" method="POST" enctype="multipart/form-data">
+
             @csrf
             @method('PUT') <!-- Usamos el método PUT para actualizar los datos -->
             
@@ -46,6 +47,11 @@
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $medico->telefono }}" required>
             </div>
+
+            <div class="mb-3">
+                <label for="foto" class="form-label">Foto</label>
+                <input type="file" class="form-control" id="foto" name="foto"><br>
+            </div>            
 
             <button type="submit" class="btn btn-primary">Actualizar Médico</button>
             <a href="{{ route('admin.medicos') }}" class="btn btn-secondary">Cancelar</a>

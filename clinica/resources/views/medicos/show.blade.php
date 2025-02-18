@@ -13,4 +13,5 @@
         <p><strong>Teléfono:</strong> {{ $medico->telefono }}</p>
         <p><strong>Desde:</strong> {{ $medico->created_at }}</p>
     </div>
+
 @endsection

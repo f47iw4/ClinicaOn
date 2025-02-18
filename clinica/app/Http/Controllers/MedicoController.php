@@ -22,74 +22,106 @@ class MedicoController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'n_colegiado' => 'required|string|unique:medico',
-            'email' => 'required|email|unique:medico',
-            'telefono' => 'required|string',
-            'id_especialidad' => 'required|exists:especialidad,id'
-        ]);
+{
+    $request->validate([
+        'nombre' => 'required|string|max:255',
+        'apellidos' => 'required|string|max:255',
+        'n_colegiado' => 'required|string|unique:medico,n_colegiado',
+        'email' => 'required|email|unique:medico,email',
+        'telefono' => 'required|string',
+        'id_especialidad' => 'required|exists:especialidad,id',
+        'foto' => 'nullable|image|max:2048'
+    ]);
 
-        $medico = Medico::create([
-            'n_colegiado' => $request->n_colegiado,
-            'nombre' => $request->nombre,
-            'apellidos' => $request->apellidos,
-            'id_especialidad' => $request->id_especialidad, // Especialidad seleccionada
-            'email' => $request->email,
-            'contrasenia' => $request->contrasenia, // Aquí no estamos haciendo encriptación para la contraseñsa por ser una prueba
-            'telefono' => $request->telefono,
-        ]);
-
-        return redirect()->route('admin.medicos')->with('success', 'Médico registrado exitosamente');
+    $fotoBlob = null;
+    if ($request->hasFile('foto')) {
+        $fotoBlob = file_get_contents($request->file('foto')->getRealPath());
     }
+
+    Medico::create([
+        'n_colegiado' => $request->n_colegiado,
+        'nombre' => $request->nombre,
+        'apellidos' => $request->apellidos,
+        'id_especialidad' => $request->id_especialidad,
+        'email' => $request->email,
+        'contrasenia' => Hash::make($request->contrasenia), // Encriptar contraseña
+        'telefono' => $request->telefono,
+        'foto' => $fotoBlob
+    ]);
+
+    return redirect()->route('admin.medicos')->with('success', 'Médico registrado exitosamente');
+}
+
 
     public function edit($id)
     {
         $medico = Medico::findOrFail($id);
-        $especialidades = Especialidad::all();
+        $especialidades= Especialidad::all();
 
         return view('admin.modificar_medico', compact('medico', 'especialidades'));
     }
 
     public function update(Request $request, $id)
-    {
-        // Validación de los datos recibidos
-        $request->validate([
-            'n_colegiado' => 'required|string|max:100',
-            'nombre' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'email' => 'required|email|unique:medicos,email,' . $id,  // Excluimos el correo electrónico actual
-            'telefono' => 'nullable|string|max:20',
-            'id_especialidad' => 'required|exists:especialidades,id', // Especialidad seleccionada
-        ]);
-
-        // Buscar al médico por ID
-        $medico = Medico::findOrFail($id);
-
-        // Actualizar los datos del médico
-        $medico->update([
-            'nombre' => $request->input('nombre'),
-            'apellidos' => $request->input('apellidos'),
-            'id_especialidad' => $request->input('id_especialidad'),
-            'n_colegiado' => $request->input('n_colegiado'),
-            'email' => $request->input('email'),
-            'telefono' => $request->input('telefono'),
-        ]);
-
-        return redirect()->route('admin.medicos')->with('success', 'Médico actualizado exitosamente');
+{
+    // Validamos los campos del formulario
+    $request->validate([
+        'n_colegiado' => 'required|string|max:100',
+        'nombre' => 'required|string|max:255',
+        'apellidos' => 'required|string|max:255',
+        'email' => 'required|email|unique:medico,email,' . $id, 
+        'telefono' => 'nullable|string|max:20',
+        'id_especialidad' => 'required|exists:especialidad,id',
+        'foto' => 'nullable|image|max:2048' // Validamos que la foto sea una imagen y tenga un tamaño adecuado
+    ]);
+    
+    // Buscamos el médico que estamos actualizando
+    $medico = Medico::findOrFail($id);
+    
+    // Si el médico tiene una foto anterior, la mantenemos (si no se sube una nueva)
+    $fotoBlob = $medico->foto; // Mantener la imagen actual si no se sube una nueva
+    
+    // Si el usuario ha subido una nueva foto, la convertimos a BLOB
+    if ($request->hasFile('foto')) {
+        // Leemos el contenido de la imagen subida y la convertimos a un BLOB
+        $fotoBlob = file_get_contents($request->file('foto')->getRealPath());
     }
+    
+    // Actualizamos los datos del médico
+    $medico->update([
+        'nombre' => $request->nombre,
+        'apellidos' => $request->apellidos,
+        'id_especialidad' => $request->id_especialidad,
+        'n_colegiado' => $request->n_colegiado,
+        'email' => $request->email,
+        'telefono' => $request->telefono,
+        'foto' => $fotoBlob // Almacenamos la foto en la base de datos como BLOB
+    ]);
+    
+    return redirect()->route('admin.medicos')->with('success', 'Médico actualizado exitosamente');
+}
 
-    public function destroy($id)
+    
+
+    
+
+public function destroy($id)
+{
+    $medico = Medico::findOrFail($id);
+    $medico->delete(); // Eliminar médico directamente
+
+    return redirect()->route('admin.medicos')->with('success', 'Médico eliminado exitosamente');
+}
+
+    public function mostrarFoto($id)
     {
         $medico = Medico::findOrFail($id);
-        $medico->especialidades()->detach(); // Eliminar relación con especialidades
-        $medico->delete(); // Eliminar médico
-
-        return redirect()->route('admin.medicos')->with('success', 'Médico eliminado exitosamente');
+    
+        if (!$medico->foto) {
+            abort(404); // Si no hay imagen, muestra error 404
+        }
+    
+        return response($medico->foto)->header('Content-Type', 'image/jpeg'); 
     }
-
     // Método para mostrar detalles de un médico
     public function show($id)
     {

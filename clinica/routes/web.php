@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/medicos', [MedicoController::class, 'store'])->name('medicos.store');
     Route::get('medicos/{id}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
     Route::put('medicos/{id}', [MedicoController::class, 'update'])->name('medicos.update');
+    Route::get('/medicos/{id}/foto', [MedicoController::class, 'mostrarFoto'])->name('medicos.foto');
+
 
     // Rutas de administración de especialidades
     Route::get('/admin/especialidades', [EspecialidadController::class, 'adminIndex'])->name('admin.especialidades');
@@ -36,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/especialidades', [EspecialidadController::class, 'store'])->name('especialidades.store');
     Route::get('/especialidades/{id}/editar', [EspecialidadController::class, 'edit'])->name('especialidades.edit');
     Route::put('/especialidades/{id}', [EspecialidadController::class, 'update'])->name('especialidades.update');
+    Route::get('/especialidad/foto/{id}', [EspecialidadController::class, 'mostrarFoto'])->name('especialidad.foto');
 });
 
 // Ruta para los médicos asociados a una especialidad

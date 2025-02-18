@@ -9,15 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('medico', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('n_colegiado')->unique();
+            $table->string('nombre');
+            $table->string('apellidos');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('telefono');
+            $table->longText('foto')->nullable();
+            $table->foreignId('id_especialidad')->constrained()->onDelete('cascade');
+            $table->string('contrasenia');
             $table->timestamps();
         });
 

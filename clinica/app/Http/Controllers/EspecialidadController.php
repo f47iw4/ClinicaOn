@@ -20,58 +20,89 @@ class EspecialidadController extends Controller
 
     public function store(Request $request)
     {
-        //Validad los datos
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
-            //ambos campos obligatorios
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-        //guarda en la base de datos:
-        Especialidad::create($request->only('nombre', 'descripcion'));
-
+    
+        $especialidad = new Especialidad();
+        $especialidad->nombre = $request->nombre;
+        $especialidad->descripcion = $request->descripcion;
+    
+        if ($request->hasFile('foto')) {
+            $especialidad->foto = file_get_contents($request->file('foto')->getRealPath());
+        }
+    
+        $especialidad->save(); // Guardamos manualmente
+    
         return redirect()->route('admin.especialidades')->with('success', 'Especialidad registrada exitosamente');
-        //Hacemos que redirija a la vista de administración de especialidades no???
     }
+    
 
-    public function edit($id){
+    public function edit($id)
+    {
         $especialidad = Especialidad::findOrFail($id);
         return view('admin.modificar_especialidad', compact('especialidad'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $especialidad = Especialidad::findOrFail($id);
-        $especialidad->update($request->only('nombre', 'descripcion'));
+
+        if ($request->hasFile('foto')) {
+            $fotoBlob = file_get_contents($request->file('foto')->getRealPath());
+            $especialidad->foto = $fotoBlob;
+        }
+
+        $especialidad->nombre = $request->nombre;
+        $especialidad->descripcion = $request->descripcion;
+        $especialidad->save();
 
         return redirect()->route('admin.especialidades')->with('success', 'Especialidad actualizada exitosamente');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $especialidad = Especialidad::findOrFail($id);
         $especialidad->delete();
 
         return redirect()->route('admin.especialidades')->with('success', 'Especialidad eliminada exitosamente');
     }
 
-    /* Métodos de la vista detalle*/
-    public function show($id){
+    public function show($id)
+    {
         $especialidad = Especialidad::with('medicos')->findOrFail($id);
         return view('especialidades.show', compact('especialidad'));
     }
 
-    public function medicos($id){
+    public function medicos($id)
+    {
         $especialidad = Especialidad::findOrFail($id);
-        $medicos = $especialidad->medicos; 
+        $medicos = $especialidad->medicos;
         return view('medicos.index', compact('especialidad', 'medicos'));
     }
 
-    //Método para la vista de administración de especialidades
-    public function adminIndex(){
+    public function adminIndex()
+    {
         $especialidades = Especialidad::all();
         return view('admin.especialidades', compact('especialidades'));
+    }
+
+    public function mostrarFoto($id)
+    {
+        $especialidad = Especialidad::findOrFail($id);
+
+        if (!$especialidad->foto) {
+            abort(404);
+        }
+
+        return response($especialidad->foto)->header('Content-Type', 'image/jpeg');
     }
 }

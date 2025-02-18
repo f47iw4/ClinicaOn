@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Especialidad extends Model
 {
+    //desactivar el uso de timestemps
+    public $timestamps = false;
     // Si el nombre de la tabla no coincide con el plural del modelo, puedes especificarlo
     protected $table = 'especialidad';
 
     // Definir las columnas que se pueden asignar masivamente
-    protected $fillable = ['nombre', 'descripcion'];
+    protected $fillable = ['nombre', 'descripcion','foto'];
 
     // Relación con el modelo Médico
     public function medicos()

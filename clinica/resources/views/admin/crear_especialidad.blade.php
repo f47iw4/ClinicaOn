@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Añadir Nueva Especialidad</h1>
 
-        <form action="{{ route('especialidades.store') }}" method="POST">
+        <form action="{{ route('especialidades.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre de la Especialidad</label>
@@ -16,6 +16,11 @@
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
                 <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="foto" class="form-label">Foto</label>
+                <input type="file" class="form-control" id="foto" name="foto" required><br>
             </div>
 
             <button type="submit" class="btn btn-success">Guardar</button>

@@ -16,7 +16,7 @@ class Medico extends Model
     public function especialidades(){
         /* para que sea 1:N se pone belongsTo */
         /* ultimos cambios: he eliminado especialidad_medico*/
-        return $this->belongsTo(Especialidad::class,'id_especialidad', 'id');
+        return $this->belongsTo(Especialidad::class, 'id_especialidad');
     }
      // Método para obtener la imagen en formato base64
      public function getFotoUrlAttribute()
