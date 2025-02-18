@@ -22,11 +22,26 @@
 
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label>
-                <input type="file" class="form-control" id="foto" name="foto" required><br>
+                <input type="file" class="form-control" id="foto" name="foto" required onchange="previewImage(event)"><br>
+
+                <!-- Aquí se mostrará la imagen seleccionada -->
+                <img id="preview" src="" alt="Vista previa de la foto" style="display: none; width: 100px; height: auto;"/>
             </div>
 
             <button type="submit" class="btn btn-primary">Actualizar Especialidad</button>
             <a href="{{ route('admin.especialidades') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
+    <script>
+        // Función para previsualizar la imagen seleccionada
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var preview = document.getElementById('preview');
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Mostrar la imagen previsualizada
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 @endsection
