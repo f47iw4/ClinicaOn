@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title' , $especialidad->nombre)
+@section('title', $especialidad->nombre)
 
 @section('content')
     <div class="container">
         <h1>Médicos en la Especialidad: {{ $especialidad->nombre }}</h1>
 
-        @if($especialidad->medicos->isEmpty())
+        @if ($especialidad->medicos->isEmpty())
             <p>No hay médicos asociados a esta especialidad.</p>
         @else
             <table class="table">
@@ -19,14 +19,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($especialidad->medicos as $medico)
+                    @foreach ($especialidad->medicos as $medico)
                         <tr>
                             <td>{{ $medico->nombre }}</td>
                             <td>{{ $medico->apellidos }}</td>
                             <td>{{ $medico->n_colegiado }}</td>
                             <td>
                                 <!-- Botón para mostrar los detalles del médico -->
-                                <button class="btn btn-info" onclick="toggleDetails({{ $medico->id }})">Más detalles</button>
+                                <button class="btn btn-info" onclick="toggleDetails({{ $medico->id }})">Más
+                                    detalles</button>
                             </td>
                         </tr>
                         <!-- Detalles adicionales del médico, inicialmente ocultos -->

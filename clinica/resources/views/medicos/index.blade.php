@@ -10,18 +10,19 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Perfil</th> 
+                <th>Perfil</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach($medicos as $medico)
+            @foreach ($medicos as $medico)
                 <tr>
                     <td>{{ $medico->nombre }}</td>
                     <td>{{ $medico->apellidos }}</td>
                     <td>
-                        @if($medico->foto)
-                            <img src="data:image/jpeg;base64,{{ base64_encode($medico->foto) }}" width="50" height="50" class="rounded-circle">
+                        @if ($medico->foto)
+                            <img src="data:image/jpeg;base64,{{ base64_encode($medico->foto) }}" width="50" height="50"
+                                class="rounded-circle">
                         @else
                             <span>Sin imagen</span>
                         @endif
@@ -33,5 +34,5 @@
     </table>
 
 
-    
+
 @endsection

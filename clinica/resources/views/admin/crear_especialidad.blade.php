@@ -20,10 +20,12 @@
 
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label>
-                <input type="file" class="form-control" id="foto" name="foto" required onchange="previewImage(event)"><br>
+                <input type="file" class="form-control" id="foto" name="foto" required
+                    onchange="previewImage(event)"><br>
 
                 <!-- Aquí se mostrará la imagen seleccionada -->
-                <img id="preview" src="" alt="Vista previa de la foto" style="display: none; width: 100px; height: auto;"/>
+                <img id="preview" src="" alt="Vista previa de la foto"
+                    style="display: none; width: 100px; height: auto;" />
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>
             <a href="{{ route('admin.especialidades') }}" class="btn btn-secondary">Cancelar</a>

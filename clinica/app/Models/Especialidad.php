@@ -21,4 +21,9 @@ class Especialidad extends Model
         /* ultimo cambio he quitado especialidad_medico*/
         return $this->hasMany(Medico::class,'id_especialidad', 'id');
     }
+        public function getFotoUrlAttribute()
+    {
+        return $this->foto ? 'data:image/jpeg;base64,' . base64_encode($this->foto) : asset('imagenes/default-specialty.png');
+    }
+    
 }

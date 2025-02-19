@@ -98,11 +98,16 @@ class EspecialidadController extends Controller
     public function mostrarFoto($id)
     {
         $especialidad = Especialidad::findOrFail($id);
-
+    
         if (!$especialidad->foto) {
-            abort(404);
+            abort(404); // Si no hay imagen, devuelve error 404
         }
-
-        return response($especialidad->foto)->header('Content-Type', 'image/jpeg');
+    
+        return response()->stream(function () use ($especialidad) {
+            echo $especialidad->foto;
+        }, 200, [
+            'Content-Type' => 'image/jpeg', // Cambia esto según el tipo de imagen guardado
+            'Cache-Control' => 'public, max-age=86400', // Caché para mejorar rendimiento
+        ]);
     }
 }

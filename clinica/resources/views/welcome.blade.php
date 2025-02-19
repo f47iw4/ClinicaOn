@@ -1,11 +1,10 @@
-
 @extends('layouts.app')
 
 @section('title', 'Clínica Médica')
 <!--Aquí metes el carrusel y el resto de cosas  -->
 @section('content')
- <!-- Carrusel de Imágenes -->
- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <!-- Carrusel de Imágenes -->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <!-- Imagen 1 -->
             <div class="carousel-item active">
@@ -14,7 +13,7 @@
             <!-- Imagen 2 -->
             <div class="carousel-item">
                 <img src="{{ asset('storage/images/car2.png') }}" class="d-block w-100" alt="Imagen 2">
-                
+
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -27,5 +26,3 @@
         </button>
     </div>
 @endsection
-
-   

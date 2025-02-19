@@ -9,10 +9,11 @@
         <form action="{{ route('especialidades.update', $especialidad->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT') <!-- Método para actualizar -->
-            
+
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre de la Especialidad</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $especialidad->nombre }}" required>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $especialidad->nombre }}"
+                    required>
             </div>
 
             <div class="mb-3">
@@ -22,10 +23,12 @@
 
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto</label>
-                <input type="file" class="form-control" id="foto" name="foto" required onchange="previewImage(event)"><br>
+                <input type="file" class="form-control" id="foto" name="foto" required
+                    onchange="previewImage(event)"><br>
 
                 <!-- Aquí se mostrará la imagen seleccionada -->
-                <img id="preview" src="" alt="Vista previa de la foto" style="display: none; width: 100px; height: auto;"/>
+                <img id="preview" src="" alt="Vista previa de la foto"
+                    style="display: none; width: 100px; height: auto;" />
             </div>
 
             <button type="submit" class="btn btn-primary">Actualizar Especialidad</button>
